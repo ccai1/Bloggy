@@ -1,0 +1,43 @@
+<!DOCTYPE = html>
+<html>
+		<title>
+			{%block title%}
+				Welcome to Buggy Blogger!
+			{%endblock title%}
+		</title>
+	<head>
+		{%block greeting%}
+			{%set msgs = get_flashed_messages()%}
+			{%for each in msgs %}
+			<h1>{{each}}</h1>
+			{%endfor%}
+		{%endblock greeting%}
+
+	</head>
+	<body>
+		{%block login %}
+		<h3>Welcome to Buggy Bloggers!</h3>
+		<h3>To view/edit blogs, please login.</h3>
+		<form action="/login" method="POST">
+			Username: <input type = "text" name="usr" placeholder = "Username"></br>
+			Password: <input type = "password" name="pwd" placeholder = "Password"></br>
+			<input type="submit" value="Submit">
+		</form>
+		{%endblock login%} <br>
+
+		<h3>New User? Smash that register button!</h3>
+		{%block register%}
+			<form action="/register" method="POST">
+				Username: <input type = "text" name="new_usr" placeholder = Username></br>
+				Password: <input type = "password" name="new_pwd" placeholder = Password></br>
+				Re-enter Password: <input type = "password" name="re_pwd" placeholder = Password></br>
+				<input type="submit" value="Register">
+			</form>
+		{% endblock register %}
+	</body>
+		{%block footer%}
+	<footer>
+		<p>&copyBuggy Blogger Developers
+	</footer>
+		{%endblock footer%}
+</html>

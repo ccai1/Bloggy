@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+{% block nav %}
+  <a href="/">Home</a>&nbsp;
+  <a href="/profile">Your Profile</a>&nbsp;
+  <a href="/create">Create a New Blog</a>&nbsp;
+  <a href="/usernav">Other Users</a>&nbsp;<br>
+{% endblock %}
+  <head>Search Results</head>
+  <h1>Here's what we found:</h1>
+  <body>
+    {{typer}}
+    <br>
+    {% if typer|string == 'Users' %}
+      {% for result in results %}
+        <form action="/profile", method = "POST">
+          {{result[2]}}<br>
+          <button type="submit" name="user_id" value={{result[0]}}>View user</button><br><br>
+        </form>
+      {% endfor %}
+    {% elif typer|string == 'Posts' %}
+      {% for result in results %}
+        <form action="/blog", method = "POST">
+          <h3>{{result[6]}}</h3>
+          {{result[3]}}<br><br>
+          <i>{{result[4]}}</i><br>
+          <button type="submit" name="blog_id" value={{result[1]}}>View blog</button><br>
+        </form>
+      {% endfor %}
+    {% else %}
+      {% for result in results %}
+       <form action="/blog" method = "POST">
+        <b>{{result[3]}}</b><br>
+        <i>{{result[4]}}</i><br>
+        Category: {{result[5]}}<br>
+        <button type="submit" name="blog_id" value={{result[0]}}>view blog</button><br>
+      {% endfor %}
+    {% endif %}
+
+  </body>
+</html>

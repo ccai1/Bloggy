@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+{% block nav %}
+  <a href="/">Home</a>&nbsp;
+  <a href="/profile">Your Profile</a>&nbsp;
+  <a href="/create">Create a New Blog</a>&nbsp;
+  <a href="/usernav">Other Users</a>&nbsp;<br>
+{% endblock %}
+<h1> Welcome to {{username}}'s page!</h1>
+  <h1>{{username}}'s Blogs:</h1>
+  {% for blog in blogs %}
+    <form action="/blog" method = "POST">
+      <b>{{blog[3]}}</b><br>
+      <i>{{blog[4]}}</i><br>
+      Category: {{blog[5]}}<br>
+      <button type="submit" name="blog_id" value={{blog[0]}}>view blog</button><br>
+    </form>
+    {% if owner %}
+      <form action="/delete_blog" method="POST">
+        <button type="submit" name="blog_id" value={{blog[0]}}>delete blog</button><br><br><br>
+      </form>
+    {% endif %}
+  {% endfor %}
+</html>

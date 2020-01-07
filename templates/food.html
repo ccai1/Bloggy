@@ -1,0 +1,28 @@
+<!DOCTYPE = html>
+<html>
+  {% block title %}
+    <title>Food</title>
+  {% endblock %}
+
+  {% block nav %}
+    <a href="/">Home</a>&nbsp;
+    <a href="/profile">Your Profile</a>&nbsp;
+    <a href="/create">Create a New Blog</a>&nbsp;
+    <a href="/usernav">Other Users</a>&nbsp;<br>
+  {% endblock %}
+
+  {% block head %}
+    <h3>Food</h3>
+  {% endblock %}
+
+  {% block content %}
+    {% for blog in blogs %}
+      <b>{{blog[3]}}</b><br>
+      <i>{{blog[4]}}</i><br>
+      <form action="/blog" method = "POST">
+        <button type="submit" name = "blog_id" value = {{blog[0]}}>view blog</button>
+      </form><br>
+    {% endfor %}
+  {% endblock %}
+
+</html>

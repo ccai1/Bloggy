@@ -1,0 +1,43 @@
+<!DOCTYPE = html>
+<html>
+	{%block title%}<title>Welcome</title>{%endblock title%}
+	{%set msgs = get_flashed_messages()%}
+		{%for each in msgs %}
+		<h1>{{each}}</h1>
+		<br>
+	{%endfor%}
+	{% block nav %}
+		<a href="/">Home</a>&nbsp;
+		<a href="/profile">Your Profile</a>&nbsp;
+		<a href="/create">Create a New Blog</a>&nbsp;
+		<a href="/usernav">Other Users</a>&nbsp;<br><br>
+	{% endblock %}
+	{%block greeting%}
+		<head>
+	  	Hello, {{ user }}!
+		</head><br><br>
+	{%endblock greeting%}
+  <div class="sidenav"><b>Blog Categories</b><br>
+			<a href="/food">Food</a>
+			<a href="/tech">Tech</a>
+			<a href="/sports">Sports</a>
+			<a href="/news">News</a>
+			<a href="/life">Life</a>
+			<a href="/music">Music</a>
+			<a href="/miscellaneous">Miscellaneous</a>
+	</div>
+    </br>
+    <form action="/search", method = "POST">
+		Looking for something? <input type = "text" name="search_value" placeholder = "username, title, or heading"></br>
+        <input type="submit" value="search">
+		<select name = 'searchtype'>
+				<option value = "User">User</option>
+				<option value = "Blog">Blog</option>
+				<option value = "Post">Post</option>
+			</select>
+		</form>
+
+	{%block login%}
+		<br><br><br><a href = '/logout'><input type = "button" value="logout"></input></a>
+	{%endblock login%}
+</html>

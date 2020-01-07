@@ -1,0 +1,25 @@
+<!DOCTYPE = html>
+<html>
+	{% block nav %}
+  	<a href="/">Home</a>&nbsp;
+  	<a href="/profile">Your Profile</a>&nbsp;
+  	<a href="/create">Create a New Blog</a>&nbsp;
+  	<a href="/usernav">Other Users</a>&nbsp;<br>
+	{% endblock %}
+	{%block title%}<title>Add a new post!</title>{%endblock title%}
+
+	{%block header%}<b><h3>Add a new post to {{blog[3]}}</h3></b>{%endblock header%}
+
+	{%block add%}
+	<b>Add a post</b>
+		<form action="/post" method = "POST">
+			Post heading: <input type = "text" name="heading" placeholder = "Heading"></br>
+			<textarea name="text" rows="10" cols="30" placeholder = "Enter your stuff here"></textarea></br>
+			<!-- Add some nice pictures!
+			<input type="file" name="pic" accept="image/*">
+  		<br> -->
+  		<button type="submit" name="blog_id" value={{blog[0]}}>Post!</button>
+		</form>
+	{%endblock add%}
+	<a href="/profile">Profile</a><br><br>
+</html>

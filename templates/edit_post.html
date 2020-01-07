@@ -1,0 +1,23 @@
+<!DOCTYPE = html>
+<html>
+	{% block nav %}
+		<a href="/">Home</a>&nbsp;
+		<a href="/profile">Your Profile</a>&nbsp;
+		<a href="/create">Create a New Blog</a>&nbsp;
+		<a href="/usernav">Other Users</a>&nbsp;<br>
+	{% endblock %}
+	{%block title%}<title>Edit your post!</title>{%endblock title%}
+
+	{%block header%}<b><h3>Edit post</h3></b>{%endblock header%}
+
+	{%block edit%}
+	<!-- display all posts with edit options -->
+		<b>Post heading: </b> {{post[6]}}<br>
+		<form action="/edit" method = "POST">
+			<textarea name="text" rows="10" cols="30">"{{post[3]}}""</textarea>
+			<br>
+			<button type="submit" name="post_id" value={{post[0]}}>edit!</button>
+		</form>
+	{%endblock edit%}
+
+</html>

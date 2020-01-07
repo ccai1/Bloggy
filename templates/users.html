@@ -1,0 +1,16 @@
+<!DOCTYPE = html>
+<html>
+  {% block nav %}
+    <a href="/">Home</a>&nbsp;
+    <a href="/profile">Your Profile</a>&nbsp;
+    <a href="/create">Create a New Blog</a>&nbsp;
+    <a href="/usernav">Other Users</a>&nbsp;<br>
+    {% endblock %}
+  <h2>View other bloggers and their work</h2>
+  {% for user in users %}
+    <form action="/profile", method = "POST">
+      {{user[2]}}<br>
+      <button type="submit" name="user_id" value={{user[0]}}>View user</button><br><br>
+    </form>
+  {% endfor %}
+</html>

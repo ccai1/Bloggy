@@ -1,0 +1,32 @@
+<!DOCTYPE = html>
+<html>
+	{% block nav %}
+		<a href="/">Home</a>&nbsp;
+		<a href="/profile">Your Profile</a>&nbsp;
+		<a href="/create">Create a New Blog</a>&nbsp;
+		<a href="/usernav">Other Users</a>&nbsp;<br>
+	{% endblock %}
+	{%block title%}<title>Create a new blog!</title>{%endblock title%}
+
+	{%block header%}<b><h3>Create a new blog!</h3></b>{%endblock header%}
+  {%block add%}
+		<form action="/makeblog", method = "POST", id = 'makeblog'>
+			Blog Title: <input type = "text" name="blogTitle" placeholder = "Title" required></br>
+			Description:
+			<br>
+			<textarea name="blogDes" rows="10" cols="30" placeholder = "Enter your stuff here" required></textarea>
+			<br>
+			<input type="submit" value="Create">
+		</form>
+			Category:
+			<select name = 'blogCat' form = 'makeblog'>
+					<option value = "Food" name = "blogCat">Food</option>
+					<option value = "Tech" name = "blogCat">Tech</option>
+					<option value = "Sports" name = "blogCat">Sports</option>
+					<option value = "News" name = "blogCat">News</option>
+					<option value = "Life" name = "blogCat">Life</option>
+					<option value = "Music" name = "blogCat">Music</option>
+					<option value = "Miscellaneous" name = "blogCat">Miscellaneous</option>
+				</select>
+	{%endblock add%}
+</html>
